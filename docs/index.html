@@ -82,6 +82,21 @@
 </script>
 <script src="//unpkg.com/docsify"></script>
 <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
-  
+<link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
+<script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '6a922b5439d27f264a16',
+    clientSecret: '3bdf63ced1e822bd47b8949f0df97b3d7548983e',
+    repo: 'notes',
+    owner: 'kai-xx',
+    admin: ['kai-xx'],
+    id: location.pathname,
+    // facebook-like distraction free mode
+    distractionFreeMode: false
+  })
+</script>
 </body>
 </html>
