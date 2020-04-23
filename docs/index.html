@@ -7,6 +7,8 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
+
   <style type="text/css">
     body section {
       background: white !important;
@@ -17,86 +19,92 @@
   <div id="app"></div>
   <script>
     window.$docsify = {
-      homepage: 'index.md',
-      name: 'out',
-      repo: 'https://github.com/kai-xx/out-clues.git',
-      coverpage: true,
+          homepage: 'index.md',
+          name: 'out',
+          repo: 'https://github.com/kai-xx/out-clues.git',
+          coverpage: true,
 
-      search: 'auto', // default
+          search: 'auto', // default
 
-      search : [
-        '/',            // => /README.md
-        '/redis', 
-        '/index', 
-      ],
+          search : [
+            '/',            // => /README.md
+            '/redis', 
+            '/index', 
+          ],
 
-      // complete configuration parameters
-      search: {
-        maxAge: 86400000, // Expiration time, the default one day
-        paths: [
-         '/',            // => /README.md
-        '/redis', 
-        ], // or 'auto'
-        placeholder: 'Type to search',
+          // complete configuration parameters
+          search: {
+            maxAge: 86400000, // Expiration time, the default one day
+            paths: [
+             '/',            // => /README.md
+            '/redis', 
+            ], // or 'auto'
+            placeholder: 'Type to search',
 
-        // Localization
-        placeholder: {
-          '/zh-cn/': '搜索',
-          '/': 'Type to search'
-        },
+            // Localization
+            placeholder: {
+              '/zh-cn/': '搜索',
+              '/': 'Type to search'
+            },
 
-        noData: 'No Results!',
+            noData: 'No Results!',
 
-        // Localization
-        noData: {
-          '/zh-cn/': '找不到结果',
-          '/': 'No Results'
-        },
+            // Localization
+            noData: {
+              '/zh-cn/': '找不到结果',
+              '/': 'No Results'
+            },
 
-        // Headline depth, 1 - 6
-        depth: 6,
+            // Headline depth, 1 - 6
+            depth: 6,
 
-        hideOtherSidebarContent: false, // whether or not to hide other sidebar content
+            hideOtherSidebarContent: false, // whether or not to hide other sidebar content
 
-        // To avoid search index collision
-        // between multiple websites under the same domain
-        namespace: 'website-1',
-      },
-       plugins: [
-            function (hook) {
-                var footer = [
-                    '<hr/>',
-                    '<footer>',
-                    '<span>凯 &copy; 2020.  </span>',
-                    '<span>Powered By docsify. </span>',
-                    '<span> Hosted by <a href="#" style="font-weight: bold">Coding Pages</a></span>',
-                    '</footer>'
-                ].join('');
+            // To avoid search index collision
+            // between multiple websites under the same domain
+            namespace: 'website-1',
+          },
+           plugins: [
+                function (hook) {
+                    var footer = [
+                        '<hr/>',
+                        '<footer>',
+                        '<span>凯 &copy; 2020.  </span>',
+                        '<span>Powered By docsify. </span>',
+                        '<span> Hosted by <a href="#" style="font-weight: bold">Coding Pages</a></span>',
+                        '</footer>'
+                    ].join('');
 
-                hook.afterEach(function (html) {
-                    return html + footer
-                })
-            }
-        ]
-  }
-</script>
-<script src="//unpkg.com/docsify"></script>
-<script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
-<link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
+                    hook.afterEach(function (html) {
+                        return html + footer
+                    })
+                }
+            ]
+      }
+  </script>
+  <script src="//unpkg.com/docsify"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
+  <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script type="text/javascript">
+    const gitalk = new Gitalk({
+          clientID: '6a922b5439d27f264a16',
+          clientSecret: '3bdf63ced1e822bd47b8949f0df97b3d7548983e',
+          repo: 'notes',
+          owner: 'kai-xx',
+          admin: ['kai-xx'],
+          title: location.hash.match(/#(.*?)([?]|$)/)[1],
+          id: location.hash.match(/#(.*?)([?]|$)/)[1],
+          // facebook-like distraction free mode
+          distractionFreeMode: false
+        })
 
-<script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
-<script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script>
-  const gitalk = new Gitalk({
-    clientID: '6a922b5439d27f264a16',
-    clientSecret: '3bdf63ced1e822bd47b8949f0df97b3d7548983e',
-    repo: 'notes',
-    owner: 'kai-xx',
-    admin: ['kai-xx'],
-    id: location.pathname,
-    // facebook-like distraction free mode
-    distractionFreeMode: false
-  })
-</script>
+        // 监听URL中hash的变化，如果发现换了一个MD文件，那么刷新页面，解决整个网站使用一个gitalk评论issues的问题。
+        window.onhashchange = function(event){
+          if(event.newURL.split('?')[0] !== event.oldURL .split('?')[0]) {
+            location.reload()
+          }
+        }
+  </script>
 </body>
 </html>
