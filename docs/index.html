@@ -20,8 +20,8 @@
   <script>
     window.$docsify = {
           homepage: 'index.md',
-          name: 'out',
-          repo: 'https://github.com/kai-xx/out-clues.git',
+          name: '学习总结',
+          repo: 'https://github.com/kai-xx',
           coverpage: true,
 
           search: 'auto', // default
@@ -36,8 +36,9 @@
           search: {
             maxAge: 86400000, // Expiration time, the default one day
             paths: [
-             '/',            // => /README.md
-            '/redis', 
+               '/',            // => /README.md
+               '/redis', 
+               '/index', 
             ], // or 'auto'
             placeholder: 'Type to search',
 
@@ -81,12 +82,14 @@
                 }
             ]
       }
+      
   </script>
   <script src="//unpkg.com/docsify"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
   <script type="text/javascript">
+    
     const gitalk = new Gitalk({
           clientID: '6a922b5439d27f264a16',
           clientSecret: '3bdf63ced1e822bd47b8949f0df97b3d7548983e',

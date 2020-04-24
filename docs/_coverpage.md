@@ -1,4 +1,4 @@
-<img src="./icon.png" style="zoom:20%">
+<img src="./icon.png" style="zoom:8%">
 
 # 学习总结 <small>0.0.1</small>
 
@@ -9,3 +9,4 @@
 
 [GitHub](https://github.com/kai-xx/)
 [Getting Started](#headline)
+
